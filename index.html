@@ -6,31 +6,10 @@
   <title>X-Men TAS Intro</title>
 </head>
 <body>
-  <h1>X-Men TAS Intro</h1>
-
-  <!-- Audio Element -->
-  <audio id="myAudio" controls>
-    <source src="https://github.com/Riccopaiva/Songs/raw/refs/heads/main/X-men-tas-intro.mp3" type="audio/mpeg">
-    Your browser does not support the audio element.
-  </audio>
-
-  <script>
-    const audio = document.getElementById('myAudio');
-
-    // Attempt autoplay bypass
-    document.addEventListener('DOMContentLoaded', () => {
-      audio.play().then(() => {
-        console.log('Autoplay started successfully');
-      }).catch(error => {
-        console.log('Autoplay failed. Trying muted playback:', error);
-        audio.muted = true; // Start muted if autoplay fails
-        audio.play().then(() => {
-          console.log('Muted autoplay started successfully');
-        }).catch(err => {
-          console.error('Muted autoplay also failed:', err);
-        });
-      });
-    });
-  </script>
+  <h1>Play X-Men TAS Intro</h1>
+  <!-- Play Button -->
+  <a href="https://github.com/Riccopaiva/Songs/raw/refs/heads/main/X-men-tas-intro.mp3" target="_blank">
+    <img src="https://github.com/Riccopaiva/Songs/raw/main/xmen97_play_button.jpg" alt="Play X-Men TAS Intro" style="width:300px; height:auto;">
+  </a>
 </body>
 </html>
