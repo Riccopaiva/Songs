@@ -6,13 +6,19 @@
   <title>X-Men TAS Intro</title>
 </head>
 <body>
-  <h1>Play X-Men TAS Intro</h1>
+  <h1>X-Men TAS Intro</h1>
 
   <!-- Play Button Image -->
   <img src="https://riccopaiva.github.io/Songs/xmen97_play_button.jpg" 
        alt="Play X-Men TAS Intro" 
-       style="width:300px; height:auto; cursor:pointer;" 
+       style="width:150px; height:auto; cursor:pointer;" 
        id="playButton">
+
+  <!-- Stop Button Image -->
+  <img src="https://riccopaiva.github.io/Songs/stop_audio.gif" 
+       alt="Stop X-Men TAS Intro" 
+       style="width:150px; height:auto; cursor:pointer;" 
+       id="stopButton">
 
   <!-- Audio Element -->
   <audio id="audioPlayer">
@@ -21,12 +27,20 @@
   </audio>
 
   <script>
-    // JavaScript to Play Audio When Image is Clicked
+    // Get buttons and audio elements
     const playButton = document.getElementById('playButton');
+    const stopButton = document.getElementById('stopButton');
     const audioPlayer = document.getElementById('audioPlayer');
 
+    // Play audio when play button is clicked
     playButton.addEventListener('click', () => {
-      audioPlayer.play(); // Play the audio
+      audioPlayer.play();
+    });
+
+    // Stop audio when stop button is clicked
+    stopButton.addEventListener('click', () => {
+      audioPlayer.pause(); // Pause the audio
+      audioPlayer.currentTime = 0; // Reset to the beginning
     });
   </script>
 </body>
