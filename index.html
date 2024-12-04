@@ -7,9 +7,27 @@
 </head>
 <body>
   <h1>Play X-Men TAS Intro</h1>
-  <!-- Play Button -->
-  <a href="https://github.com/Riccopaiva/Songs/raw/refs/heads/main/X-men-tas-intro.mp3" target="_blank">
-    <img src="https://github.com/Riccopaiva/Songs/raw/main/xmen97_play_button.jpg" alt="Play X-Men TAS Intro" style="width:300px; height:auto;">
-  </a>
+
+  <!-- Play Button Image -->
+  <img src="https://github.com/Riccopaiva/Songs/raw/main/xmen97_play_button.jpg" 
+       alt="Play X-Men TAS Intro" 
+       style="width:300px; height:auto; cursor:pointer;" 
+       id="playButton">
+
+  <!-- Audio Element (Hidden) -->
+  <audio id="audioPlayer">
+    <source src="https://github.com/Riccopaiva/Songs/raw/refs/heads/main/X-men-tas-intro.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <script>
+    // JavaScript to Play Audio When Image is Clicked
+    const playButton = document.getElementById('playButton');
+    const audioPlayer = document.getElementById('audioPlayer');
+
+    playButton.addEventListener('click', () => {
+      audioPlayer.play(); // Play the audio
+    });
+  </script>
 </body>
 </html>
