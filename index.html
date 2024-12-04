@@ -4,21 +4,47 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>X-Men TAS Intro</title>
+  <style>
+    /* Styling for the container to stack images */
+    .button-container {
+      position: relative;
+      width: 150px; /* Set width of the button */
+      height: auto;
+      cursor: pointer;
+    }
+
+    /* Play Button Image */
+    .play-button {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* Stop Button Overlay */
+    .stop-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(255, 255, 255, 0.5); /* White with 50% transparency */
+      background-image: url('https://riccopaiva.github.io/Songs/stop_audio.gif');
+      background-size: cover;
+      background-position: center;
+      display: none; /* Hidden by default */
+    }
+  </style>
 </head>
 <body>
   <h1>X-Men TAS Intro</h1>
 
-  <!-- Play Button Image -->
-  <img src="https://riccopaiva.github.io/Songs/xmen97_play_button.jpg" 
-       alt="Play X-Men TAS Intro" 
-       style="width:150px; height:auto; cursor:pointer;" 
-       id="playButton">
-
-  <!-- Stop Button Image -->
-  <img src="https://riccopaiva.github.io/Songs/stop_audio.gif" 
-       alt="Stop X-Men TAS Intro" 
-       style="width:150px; height:auto; cursor:pointer;" 
-       id="stopButton">
+  <!-- Button Container -->
+  <div class="button-container" id="playContainer">
+    <img src="https://riccopaiva.github.io/Songs/xmen97_play_button.jpg" 
+         alt="Play X-Men TAS Intro" 
+         class="play-button">
+    <div class="stop-overlay" id="stopOverlay"></div>
+  </div>
 
   <!-- Audio Element -->
   <audio id="audioPlayer">
@@ -27,20 +53,25 @@
   </audio>
 
   <script>
-    // Get buttons and audio elements
-    const playButton = document.getElementById('playButton');
-    const stopButton = document.getElementById('stopButton');
+    // Get the elements
+    const playContainer = document.getElementById('playContainer');
+    const stopOverlay = document.getElementById('stopOverlay');
     const audioPlayer = document.getElementById('audioPlayer');
 
-    // Play audio when play button is clicked
-    playButton.addEventListener('click', () => {
-      audioPlayer.play();
-    });
+    // Toggle play and stop
+    let isPlaying = false; // Track audio state
 
-    // Stop audio when stop button is clicked
-    stopButton.addEventListener('click', () => {
-      audioPlayer.pause(); // Pause the audio
-      audioPlayer.currentTime = 0; // Reset to the beginning
+    playContainer.addEventListener('click', () => {
+      if (isPlaying) {
+        // Pause the audio
+        audioPlayer.pause();
+        stopOverlay.style.display = 'none'; // Hide stop overlay
+      } else {
+        // Play the audio
+        audioPlayer.play();
+        stopOverlay.style.display = 'block'; // Show stop overlay
+      }
+      isPlaying = !isPlaying; // Toggle the state
     });
   </script>
 </body>
